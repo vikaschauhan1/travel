@@ -47,6 +47,16 @@
      </div> <!-- /container -->	
 			<?php $att = array('class' => 'form-signin');?>
 			<?php echo form_open('login/validate_credentials', $att); ?>
+            <?
+                $booking = $this->input->get('is_booking',0);
+                $guide_id = $this->input->get('guide',0);
+                $location_id = $this->input->get('location',0);
+            ?>
+            <?if(isset($booking) && $booking):?>
+                <input type="hidden" name="is_booking" value="1">
+                <input type="hidden" name="guide_id" value="<?=$guide_id?>">
+                <input type="hidden" name="location_id" value="<?=$location_id?>">
+            <?endif;?>
 		    <div class="col-md-4 col-md-offset-4 well">
           	 <?php echo form_open('signup/add_user'); ?>
              <legend>Please login</legend>

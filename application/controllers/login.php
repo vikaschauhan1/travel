@@ -3,8 +3,8 @@
 class Login extends CI_Controller {
 
 	function index()
-	{
-	   $data['title'] = 'Login';
+	{  
+       $data['title'] = 'Login';
 	   $data['error'] = '';
 	   $this->load->view('backend/login_form', $data);
 	}
@@ -22,6 +22,12 @@ class Login extends CI_Controller {
 	 				'role'=>$details->role
 	 				);
 	 		$this->session->set_userdata($data);
+            
+            if($this->input->post('is_booking')){
+                $this->session->set_flashdata('guide_id',$this->input->post('guide_id'));
+                $this->session->set_flashdata('location_id',$this->input->post('location_id'));
+                redirect('bookings/book');
+            }
 	 		redirect('admin/dashboard');
 	 	}
 	 	else

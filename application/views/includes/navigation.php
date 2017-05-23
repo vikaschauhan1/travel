@@ -20,5 +20,11 @@
                 <div class="nav-title">Profile</div>
               </a>
             </li>
+            <li <?php if ($page == "booking"){ echo "class='active'";} ?>>
+              <a href="<?php echo base_url() ?>index.php/admin/bookings">
+                <div class="nav-icon"><span class="icon-user"></span></div>
+                <div class="nav-title">Bookings</div>
+              </a>
+            </li>
           </ul>
 </div>

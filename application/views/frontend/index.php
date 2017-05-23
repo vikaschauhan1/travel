@@ -80,17 +80,21 @@
       <div class="container">
       <div class="row">
         <?foreach($guideRowset as $guideRow):?>
+        <?php echo form_open('bookings/book') ?>
           <div class="col-sm-6 col-md-3">
+              <input type="hidden" name="guide_id" value="<?=$guideRow['id']?>">
+              <input type="hidden" name="location_id" value="<?=$guideRow['location_id']?>">
             <div class="thumbnail" style='height: 255px'>
               <div class="caption">
                 <h3><?=$guideRow['firstname'].' '.$guideRow['lastname'];?></h3>
                 <p><?=$guideRow['about_me']?></p>
                 <p><b>Email:</b><?=$guideRow['email']?></p>
                 <p><b>Contact Number:</b><?=$guideRow['phone']?></p>
-                <p><a href="#" class="btn btn-primary" role="button">Book Now</a></p>
+                <p><input type="submit" value="Book Now" class="btn btn-primary" ></p>
               </div>
             </div>
           </div>
+      </form>
         <?endforeach;?>
           
         </div>
