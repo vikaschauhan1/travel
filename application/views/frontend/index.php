@@ -65,7 +65,7 @@
                           <div class="col-sm-5 col-md-5">
                               <label for="location">Location</label>
                                 <select class="form-control" name='location'>
-                                    <option>--Select Location--</option>
+                                    <option value="0">--Select Location--</option>
                                   <?foreach($location as $locationRow):?>
                                     <option value="<?=$locationRow['id']?>" <?if($selectedlocation == $locationRow['id']):?>selected<?endif;?>><?=$locationRow['location']?></option>
                                   <?endforeach;?>
@@ -84,24 +84,42 @@
 
       <div class="container">
       <div class="row">
-        <?foreach($guideRowset as $guideRow):?>
-        <?php echo form_open('bookings/book') ?>
-          <div class="col-sm-6 col-md-3">
-              <input type="hidden" name="guide_id" value="<?=$guideRow['user_id']?>">
-              <input type="hidden" name="location_id" value="<?=$guideRow['location_id']?>">
-            <div class="thumbnail" style='height: 255px'>
-              <div class="caption">
-                <h3><?=$guideRow['firstname'].' '.$guideRow['lastname'];?></h3>
-                <p><?=$guideRow['about_me']?></p>
-                <p><b>Email:</b><?=$guideRow['email']?></p>
-                <p><b>Contact Number:</b><?=$guideRow['phone']?></p>
-                <p><input type="submit" value="Book Now" class="btn btn-primary" ></p>
+          <?if(count($guideRowset)>0):?>
+            <?foreach($guideRowset as $guideRow):?>
+            <?php echo form_open('bookings/book') ?>
+              <div class="col-sm-6 col-md-3">
+                  <input type="hidden" name="guide_id" value="<?=$guideRow['user_id']?>">
+                  <input type="hidden" name="location_id" value="<?=$guideRow['location_id']?>">
+                <div class="thumbnail" style='height: 255px'>
+                  <div class="caption">
+                    <h3><?=$guideRow['firstname'].' '.$guideRow['lastname'];?></h3>
+                    <p><?=$guideRow['about_me']?></p>
+                    <p><b>Email:</b><?=$guideRow['email']?></p>
+                    <p><b>Contact Number:</b><?=$guideRow['phone']?></p>
+                    <p><input type="submit" value="Book Now" class="btn btn-primary" ></p>
+                  </div>
+                </div>
               </div>
+          </form>
+            <?endforeach;?>
+        <?else:?>
+        <div class="col-sm-10 col-md-10">
+            <div class="thumbnail" style='text-align: center;color: red'>
+                <style>
+                .footer {
+                    position: absolute;
+                    right: 25%;
+                    bottom: 8%;
+                    left: 13%;
+                    padding: 1rem;
+                    padding-right: 0;
+                    padding-left: 0;
+                }
+                </style>
+                Sorry! There is no Guide available at this location
             </div>
-          </div>
-      </form>
-        <?endforeach;?>
-          
+        </div>
+        <?endif;?>
         </div>
       <footer class="footer">
         <p>&copy; Travel Guide 2017</p>

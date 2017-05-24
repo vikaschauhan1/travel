@@ -16,14 +16,18 @@ Class Profile extends CI_Model
 	 	
 	}
     
-    function getGuidesByLocation($locationId){
+    function getGuidesByLocation($locationId = null){
         
         $this->db->select('users_profile.id, users_profile.location_id,users_profile.about_me, users_profile.age, users_profile.gender, '
                 . 'users.firstname,users_profile.user_id, users.lastname, users.email, users.phone, users.role', false);
         $this->db->from('users_profile');
         $this->db->join('users', 'users_profile.user_id = users.id');
         $this->db->where('users.role = ', '2');
-        $this->db->where('users_profile.location_id = ', $locationId);
+        
+        if($locationId){
+            $this->db->where('users_profile.location_id = ', $locationId);
+        }
+        
         $query = $this->db->get();
         
         if($query->num_rows() > 0){
