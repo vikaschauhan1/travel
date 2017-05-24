@@ -5,7 +5,7 @@ class Bookings extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-        $this->is_logged_in();
+                $this->is_logged_in();
 	}
 	function index(){
 		$this->load->model('users');
@@ -20,13 +20,18 @@ class Bookings extends CI_Controller {
 		{
 			$this->load->model('booking');
 			$this->load->model('location');
-            $data['location_id'] = $this->input->post('location_id');
-            $data['guide_id'] = $this->input->post('guide_id');
-            $data['locationRow'] = $this->location->getLocationById($this->input->post('location_id'));
+            if($this->input->get('is_booking',0)){
+                $data['location_id'] = $this->input->get('location_id');
+                $data['guide_id'] = $this->input->get('guide_id');
+            }else{
+               $data['location_id'] = $this->input->post('location_id');
+                $data['guide_id'] = $this->input->post('guide_id'); 
+            }
+
+            $data['locationRow'] = $this->location->getLocationById($data['location_id']);
             $data['bookingPage'] = $this->input->post('bookingPage',0);
-            $data['main_content'] = 'backend/bookings/booking';
             $data['title'] = 'Bookings';
-			
+
             $this->load->view('frontend/booking', $data);
 		}
 		else
@@ -41,7 +46,8 @@ class Bookings extends CI_Controller {
             
 			$this->booking->saveBooking($data);
 			$this->session->set_flashdata('message', 'Guide has booked');
-			redirect('admin/dashboard', 'refresh');
+                        
+			redirect('admin/bookings', 'refresh');
 		}
 	}
 

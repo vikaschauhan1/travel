@@ -38,7 +38,7 @@
         <h3 class="text-muted">Travel Guide</h3>
       </div>
      </div> <!-- /container -->
-     
+    
         <div class="col-md-4 col-md-offset-4 well">
         <?php echo form_open('bookings/book'); ?>
           <legend>Booking</legend>
@@ -73,7 +73,7 @@
                     <?php echo form_error('booking_date'); ?>
                 <?endif;?>
               </div>
-                <div class="form-group">
+                <div class="form-group" style='margin-left: 32%;'>
                     <a class="btn btn-danger" href='../' type='button'>Cancel </a>&nbsp;
                     <input type="submit" class="btn btn-success" value="Submit">
                 </div>

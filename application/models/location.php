@@ -15,18 +15,18 @@ Class Location extends CI_Model
     
     function getLocationById($id)
 	{  
-        $this->db->where('id', $id);
-		$query = $this->db->get('location');
-		
-        $row = array();
-        
-        if($query->num_rows() > 0)
-		{
-			$row = $query->row();
+            $this->db->where('id', $id);
+            $query = $this->db->get('location');
+
+            $row = array();
+
+            if($query->num_rows() > 0)
+                    {
+                            $row = $query->row();
+                    return $row;
+                    }
+
             return $row;
-		}
-        
-     	return $row;
 	}
 
 }

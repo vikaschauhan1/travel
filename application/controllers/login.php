@@ -23,11 +23,9 @@ class Login extends CI_Controller {
 	 				);
 	 		$this->session->set_userdata($data);
             
-            if($this->input->post('is_booking')){
-                $this->session->set_flashdata('guide_id',$this->input->post('guide_id'));
-                $this->session->set_flashdata('location_id',$this->input->post('location_id'));
-                redirect('bookings/book');
-            }
+                    if($this->input->post('is_booking')){
+                       redirect('bookings/book?is_booking=1&guide_id='.$this->input->post('guide_id').'&location_id='.$this->input->post('location_id'));
+                    }
 	 		redirect('admin/dashboard');
 	 	}
 	 	else

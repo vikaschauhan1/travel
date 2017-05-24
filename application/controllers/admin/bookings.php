@@ -15,11 +15,11 @@ class Bookings extends CI_Controller {
 	function view($details){
         
 		
-			$this->load->model('booking');
-			$this->load->model('location');
-            $this->users->get_user();
-            $data['locationRow'] = $this->location->getLocationById($this->input->post('location_id'));
-            $data['bookingPage'] = $this->input->post('bookingPage',0);
+            $this->load->model('booking');
+            $this->load->model('location');
+            $isguide = $details->role == 1? false : true; 
+            $data['allBookings'] = $this->booking->getBookingDetail($this->session->userdata('id'), $isguide);
+            $data['details'] = $details;
             $data['main_content'] = 'backend/bookings/booking';
             $data['title'] = 'Bookings';
 			

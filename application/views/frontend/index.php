@@ -38,8 +38,13 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation" class="active"><a href="">Home</a></li>
-            <li role="presentation"><a href="<?php echo base_url('/index.php/login');?>">Login</a></li>
-            <li role="presentation"><a href="<?php echo base_url('/index.php/signup');?>">Sigup</a></li>
+            <?$is_logged_in = $this->session->userdata('is_logged_in');?>
+            <?if($is_logged_in):?>
+                <li role="presentation"><a href="<?php echo base_url(); ?>index.php/login/logout">Logout</a></li>
+            <?else:?>
+                <li role="presentation"><a href="<?php echo base_url('/index.php/login');?>">Login</a></li>
+                <li role="presentation"><a href="<?php echo base_url('/index.php/signup');?>">Sigup</a></li>
+            <?endif;?>
           </ul>
         </nav>
         <h3 class="text-muted">Travel Guide</h3>
@@ -82,7 +87,7 @@
         <?foreach($guideRowset as $guideRow):?>
         <?php echo form_open('bookings/book') ?>
           <div class="col-sm-6 col-md-3">
-              <input type="hidden" name="guide_id" value="<?=$guideRow['id']?>">
+              <input type="hidden" name="guide_id" value="<?=$guideRow['user_id']?>">
               <input type="hidden" name="location_id" value="<?=$guideRow['location_id']?>">
             <div class="thumbnail" style='height: 255px'>
               <div class="caption">
