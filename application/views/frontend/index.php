@@ -72,6 +72,16 @@
                                 </select>
 
                           </div>
+                          <div class="col-sm-5 col-md-5">
+                              <label for="language">Language</label>
+                                <select class="form-control" name='language_id'>
+                                    <option value="0">--Select Language--</option>
+                                  <?foreach($languages as $languageRow):?>
+                                    <option value="<?=$languageRow['id']?>" <?if($selectedlanguage == $languageRow['id']):?>selected<?endif;?>><?=$languageRow['language']?></option>
+                                  <?endforeach;?>
+                                </select>
+
+                          </div>
 
                           <div class="col-sm-12 col-md-12"><hr>
                         		<button type="submit" id="search" class="btn btn-success" value="submit"><span class="icon-search"></span> Check available tours</button>

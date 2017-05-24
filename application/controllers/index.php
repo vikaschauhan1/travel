@@ -12,16 +12,18 @@ class Index extends CI_Controller {
            $this->load->model('location');
            $this->load->model('profile');
            $this->load->model('users');
-           $data['guideRowset'] = array();
-           $data['selectedlocation'] = '';
+           $this->load->model('language');
            
+           $data['selectedlocation'] = '';
+           $data['selectedlanguage']='';
             if($this->input->Post('search')){
                $data['selectedlocation'] = $this->input->Post('location');
-               $data['guideRowset'] = $this->profile->getGuidesByLocation($data['selectedlocation']);
+               $data['selectedlanguage'] = $this->input->Post('language_id');
+               $data['guideRowset'] = $this->profile->getGuidesByLocation($data['selectedlocation'], $data['selectedlanguage']);
            }else{
                $data['guideRowset'] = $this->profile->getGuidesByLocation();
            }
-           
+           $data['languages'] = $this->language->getLanguages();
            $data['location'] = $this->location->get_locations();
 	   $this->load->view('frontend/index', $data);
 	}

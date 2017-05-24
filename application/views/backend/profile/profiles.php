@@ -39,6 +39,25 @@
                   <?endforeach;?>
                 </select>
               </div>
+              <div class="form-group">
+                <label for="travel_style_tags">Travel Style Tags</label>
+                <textarea class="form-control" id="travel_style_tags" placeholder="Travel Style Tags" name="travel_style_tags" value="<?php echo isset($profile->travel_style_tags) ? $profile->travel_style_tags : ''; ?>"><?php echo isset($profile->travel_style_tags) ? $profile->travel_style_tags : ''; ?></textarea>
+              </div>
+            <?if($role == 2):?>
+              <div class="form-group">
+                <label for="language">Language Proficiency</label>
+                <select class="form-control" name='language_id'>
+                    <option>--Select Language--</option>
+                  <?foreach($languages as $languageRow):?>
+                    <option value="<?=$languageRow['id']?>" <?if(isset($profile->language_id) && $languageRow['id'] == $profile->language_id):?>selected <?endif?>><?=$languageRow['language']?></option>
+                  <?endforeach;?>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="destination_experties">Destination Experties</label>
+                <textarea class="form-control" id="destination_experties" placeholder="Destination Experties" name="destination_experties" value="<?php echo isset($profile->destination_experties) ? $profile->destination_experties : ''; ?>"><?php echo isset($profile->destination_experties) ? $profile->destination_experties : ''; ?></textarea>
+               </div>
+            <?endif;?>
               <button type="submit" class="btn btn-success" value="submit"><span class="icon-checkmark"></span> Save Profile</button>
             </div>
           </form>
