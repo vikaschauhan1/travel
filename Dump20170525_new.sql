@@ -249,8 +249,9 @@ CREATE TABLE `users_profile` (
   `travel_style_tags` varchar(150) DEFAULT NULL,
   `language_id` tinyint(4) DEFAULT NULL,
   `destination_experties` varchar(250) DEFAULT NULL,
+  `price` int(10) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,7 +260,7 @@ CREATE TABLE `users_profile` (
 
 LOCK TABLES `users_profile` WRITE;
 /*!40000 ALTER TABLE `users_profile` DISABLE KEYS */;
-INSERT INTO `users_profile` VALUES (8,'gfdgd',23,'male',2,NULL,1,'Passionate ',2,'Delhi'),(9,'I am afzal khan and i am not a terriorist',23,'male',5,NULL,3,'Fjjckjkjdsjhgfsdk',5,'fsdfsfsfsf'),(10,'sdfs',23,'male',5,NULL,4,'werwer',2,'sfsadfsaf'),(11,'dfgdf',23,'female',4,NULL,6,'sdfsa',2,'sdfsa'),(12,'gdfg',29,'female',3,NULL,7,'sdfgdfg',2,'sdfgsdgfd');
+INSERT INTO `users_profile` VALUES (8,'gfdgd',23,'male',2,NULL,1,'Passionate ',2,'Delhi',100),(9,'I am afzal khan and i am not a terriorist',23,'male',5,NULL,3,'Fjjckjkjdsjhgfsdk',5,'fsdfsfsfsf',0),(10,'sdfs',23,'male',5,NULL,4,'werwer',2,'sfsadfsaf',500),(11,'dfgdf',23,'female',4,NULL,6,'sdfsa',2,'sdfsa',4050),(12,'gdfg',29,'female',3,NULL,7,'sdfgdfg',2,'sdfgsdgfd',200),(13,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `users_profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -272,4 +273,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-25 12:38:33
+-- Dump completed on 2017-05-25 19:28:01

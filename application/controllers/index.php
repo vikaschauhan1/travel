@@ -19,7 +19,8 @@ class Index extends CI_Controller {
             if($this->input->Post('search')){
                $data['selectedlocation'] = $this->input->Post('location');
                $data['selectedlanguage'] = $this->input->Post('language_id');
-               $data['guideRowset'] = $this->profile->getGuidesByLocation($data['selectedlocation'], $data['selectedlanguage']);
+               $data['price'] = $this->input->Post('price');
+               $data['guideRowset'] = $this->profile->getGuidesByLocation($data['selectedlocation'], $data['selectedlanguage'], $data['price']);
            }else{
                $data['guideRowset'] = $this->profile->getGuidesByLocation();
            }

@@ -57,6 +57,10 @@
                 <label for="destination_experties">Destination Experties</label>
                 <textarea class="form-control" id="destination_experties" placeholder="Destination Experties" name="destination_experties" value="<?php echo isset($profile->destination_experties) ? $profile->destination_experties : ''; ?>"><?php echo isset($profile->destination_experties) ? $profile->destination_experties : ''; ?></textarea>
                </div>
+                <div class="form-group">
+                    <label for="price">Booking Price</label>
+                    <input type='number' class="form-control" id="price" placeholder="Booking Price" name="price" value="<?php echo isset($profile->price) ? $profile->price : ''; ?>">
+               </div>
             <?endif;?>
               <button type="submit" class="btn btn-success" value="submit"><span class="icon-checkmark"></span> Save Profile</button>
             </div>

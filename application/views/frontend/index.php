@@ -51,7 +51,7 @@
       </div>
      </div> <!-- /container -->
 
-      <div class="jumbotron" style="height: 300px;">
+      <div class="jumbotron">
         <div class="container">
               <div class="row">
                   <div class="col-sm-6 col-md-7">
@@ -62,25 +62,44 @@
                           <h4>Search</h4>
                           <hr>
                           <input type="hidden" name="search" value="1">
-                          <div class="col-sm-5 col-md-5">
-                              <label for="location">Location</label>
-                                <select class="form-control" name='location'>
-                                    <option value="0">--Select Location--</option>
-                                  <?foreach($location as $locationRow):?>
-                                    <option value="<?=$locationRow['id']?>" <?if($selectedlocation == $locationRow['id']):?>selected<?endif;?>><?=$locationRow['location']?></option>
-                                  <?endforeach;?>
-                                </select>
+                          <div class="row">
+                            <div class="col-sm-5 col-md-5">
+                                <label for="location">Location</label>
+                                  <select class="form-control" name='location'>
+                                      <option value="0">--Select Location--</option>
+                                    <?foreach($location as $locationRow):?>
+                                      <option value="<?=$locationRow['id']?>" <?if($selectedlocation == $locationRow['id']):?>selected<?endif;?>><?=$locationRow['location']?></option>
+                                    <?endforeach;?>
+                                  </select>
 
+                            </div>
+                            <div class="col-sm-5 col-md-5">
+                                <label for="language">Language</label>
+                                  <select class="form-control" name='language_id'>
+                                      <option value="0">--Select Language--</option>
+                                    <?foreach($languages as $languageRow):?>
+                                      <option value="<?=$languageRow['id']?>" <?if($selectedlanguage == $languageRow['id']):?>selected<?endif;?>><?=$languageRow['language']?></option>
+                                    <?endforeach;?>
+                                  </select>
+
+                            </div>
                           </div>
-                          <div class="col-sm-5 col-md-5">
-                              <label for="language">Language</label>
-                                <select class="form-control" name='language_id'>
-                                    <option value="0">--Select Language--</option>
-                                  <?foreach($languages as $languageRow):?>
-                                    <option value="<?=$languageRow['id']?>" <?if($selectedlanguage == $languageRow['id']):?>selected<?endif;?>><?=$languageRow['language']?></option>
-                                  <?endforeach;?>
-                                </select>
+                          <div class="row">
+                              <div class="col-sm-5 col-md-5">
+                                <label for="price">Fee</label>
+                                  <select class="form-control" name='price' id="price">
+                                      <option value="0">--Select Fees--</option>
+                                      <option value="1" <?if($this->input->post('price') == "1"):?>selected <?endif;?>>< 500</option>
+                                      <option value="2" <?if($this->input->post('price') == "2"):?>selected <?endif;?>>501-1000</option>
+                                      <option value="3" <?if($this->input->post('price') == "3"):?>selected <?endif;?>>1001-2000</option>
+                                      <option value="4" <?if($this->input->post('price') == "4"):?>selected <?endif;?>>2001-3000</option>
+                                      <option value="5" <?if($this->input->post('price') == "5"):?>selected <?endif;?>>3001-4000</option>
+                                      <option value="6" <?if($this->input->post('price') == "6"):?>selected <?endif;?>>4001-5000</option>
+                                      <option value="7"> <?if($this->input->post('price') == "7"):?>selected <?endif;?>> 5000</option>
+                                    
+                                  </select>
 
+                            </div>
                           </div>
 
                           <div class="col-sm-12 col-md-12"><hr>
@@ -100,14 +119,16 @@
               <div class="col-sm-6 col-md-3">
                   <input type="hidden" name="guide_id" value="<?=$guideRow['user_id']?>">
                   <input type="hidden" name="location_id" value="<?=$guideRow['location_id']?>">
-                <div class="thumbnail" style='height: 255px'>
+                <div class="thumbnail" style='min-height: 255px'>
                   <div class="caption">
                     <h3><?=$guideRow['firstname'].' '.$guideRow['lastname'];?></h3>
                     <p><?=$guideRow['about_me']?></p>
                     <p><b>Email:</b><?=$guideRow['email']?></p>
                     <p><b>Language proficiency:</b><?=$guideRow['language']?></p>
+                    <p><b>Location:</b><?=$guideRow['location']?></p>
                     <p><b>Contact Number:</b><?=$guideRow['phone']?></p>
-                    <p><input type="submit" value="Book Now" class="btn btn-primary" ></p>
+                    <p><input type="submit" value="Book Now" class="btn btn-primary" >
+                        <button type="button" value="Price" class="btn btn-success" style="min-width:80px">₹&nbsp;<?=$guideRow['price']?></button></p>
                   </div>
                 </div>
               </div>

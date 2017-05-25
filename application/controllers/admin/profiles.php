@@ -18,28 +18,29 @@ class Profiles extends CI_Controller {
 		$this->form_validation->set_rules('age', 'Age', 'required|max(100)');
 		$this->form_validation->set_rules('gender', 'gender', 'required');
 		$data['role'] = $this->session->userdata('role');
-                $data['user_id'] = $this->session->userdata('id');
+        $data['user_id'] = $this->session->userdata('id');
+        
 		if ($this->form_validation->run() == FALSE){
                     
-                        $this->load->model('location');
-                        $this->load->model('profile');
-                        $this->load->model('language');
-			$data['profile'] = $details;
-                        
-                        
-                        $data['location'] = $this->location->get_locations();
-                        if($data['role'] == 2){
-                            $data['languages'] = $this->language->getLanguages();
-                        }
+            $this->load->model('location');
+            $this->load->model('profile');
+            $this->load->model('language');
+            $data['profile'] = $details;
+
+
+            $data['location'] = $this->location->get_locations();
+            if($data['role'] == 2){
+                $data['languages'] = $this->language->getLanguages();
+            }
 			$data['main_content'] = 'backend/profile/profiles';
 			$data['title'] = 'Profile';
 			$this->load->view('includes/template', $data);
 		}else{
 			$this->load->model('profile');
 			$data = $this->input->post();
-                        $data['location_id'] = $data['location'];
-                        unset($data['location']);
-                        $this->profile->save_profile($data);
+            $data['location_id'] = $data['location'];
+            unset($data['location']);
+            $this->profile->save_profile($data);
 			$this->session->set_flashdata('message', 'profile successfully saved');
 			redirect('admin/profiles', 'refresh');
 		}
