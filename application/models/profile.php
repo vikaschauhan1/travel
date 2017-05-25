@@ -19,21 +19,21 @@ Class Profile extends CI_Model
     function getGuidesByLocation($locationId = 0, $languageId = 0){
         
         $this->db->select('users_profile.id, users_profile.location_id,users_profile.about_me, users_profile.age, users_profile.gender, '
-                . 'users.firstname,users_profile.user_id, users.lastname, users.email, users.phone, users.role', false);
+                . 'users.firstname,users_profile.user_id, users_profile.language_id, users.lastname, users.email, users.phone, users.role, languages.language', false);
         $this->db->from('users_profile');
         $this->db->join('users', 'users_profile.user_id = users.id');
         $this->db->join('languages', 'users_profile.language_id = languages.id');
         $this->db->where('users.role = ', '2');
        
         if($languageId){
-            $this->db->where('users_profile.location_id = ', $locationId);
+            $this->db->where('users_profile.language_id = ', $languageId);
         }
         if($locationId){
             $this->db->where('users_profile.location_id = ', $locationId);
         }
-       
-        $query = $this->db->get();
         
+        $query = $this->db->get();
+
         if($query->num_rows() > 0){
             $rows = $query->result_array();
             return $rows;

@@ -14,7 +14,7 @@
                 <div class="nav-title">Account Setting</div>
               </a>
             </li>
-            <li <?php if ($page == "profile"){ echo "class='active'";} ?>>
+            <li <?php if ($page == "profiles"){ echo "class='active'";} ?>>
               <a href="<?php echo base_url() ?>index.php/admin/profiles">
                 <div class="nav-icon"><span class="icon-user"></span></div>
                 <div class="nav-title">Profile</div>

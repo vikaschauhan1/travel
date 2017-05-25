@@ -105,6 +105,7 @@
                     <h3><?=$guideRow['firstname'].' '.$guideRow['lastname'];?></h3>
                     <p><?=$guideRow['about_me']?></p>
                     <p><b>Email:</b><?=$guideRow['email']?></p>
+                    <p><b>Language proficiency:</b><?=$guideRow['language']?></p>
                     <p><b>Contact Number:</b><?=$guideRow['phone']?></p>
                     <p><input type="submit" value="Book Now" class="btn btn-primary" ></p>
                   </div>
