@@ -33,7 +33,9 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo base_url(); ?>js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.min.js"></script>
-
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/highcharts.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/data.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>js/drilldown.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
