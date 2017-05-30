@@ -38,10 +38,10 @@ Class Setting extends CI_Model
 	}
 
 	function save_settings($data,$id)
-	{
-		$crop_data = elements(array('firstname','lastname','phone','email'), $data);
-		$this->db->where('id', $id);
-		$this->db->update('users', $crop_data);
+	{   
+        unset($data['account_id']);
+        $this->db->where('id', $id);
+		$this->db->update('users', $data);
 	}
 
 

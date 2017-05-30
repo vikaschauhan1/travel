@@ -22,8 +22,10 @@ class Settings extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->model('setting');
+			$this->load->model('country');
 			$data['setting'] = $details;
 			$data['main_content'] = 'backend/settings/settings';
+            $data['countries'] = $this->country->getCountries();
 			$data['title'] = 'Settings';
 			$this->load->view('includes/template', $data);
 		}
