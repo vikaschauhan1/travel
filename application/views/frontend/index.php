@@ -124,6 +124,7 @@
                     <h3><?=$guideRow['firstname'].' '.$guideRow['lastname'];?></h3>
                     <p><?=$guideRow['about_me']?></p>
                     <p><b>Email:</b><?=$guideRow['email']?></p>
+                    <p><b>Views:</b><?=$guideRow['views']?></p>
                     <p><b>Language proficiency:</b><?=$guideRow['language']?></p>
                     <p><b>Location:</b><?=$guideRow['location']?></p>
                     <p><b>Contact Number:</b><?=$guideRow['phone']?></p>

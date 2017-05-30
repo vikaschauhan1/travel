@@ -19,8 +19,8 @@ class Profiles extends CI_Controller {
 		$this->form_validation->set_rules('gender', 'gender', 'required');
 		$data['role'] = $this->session->userdata('role');
         $data['user_id'] = $this->session->userdata('id');
-        
-		if ($this->form_validation->run() == FALSE){
+
+            if ($this->form_validation->run() == FALSE){
                     
             $this->load->model('location');
             $this->load->model('profile');

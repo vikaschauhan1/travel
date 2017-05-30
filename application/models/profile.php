@@ -19,7 +19,7 @@ Class Profile extends CI_Model
     function getGuidesByLocation($locationId = 0, $languageId = 0, $priceFilter = 0){
         
         $this->db->select('users_profile.id, users_profile.location_id,users_profile.about_me, users_profile.age, users_profile.gender, '
-                . 'users.firstname,users_profile.user_id, users_profile.price, users_profile.language_id,location.location, users.lastname, users.email, users.phone, users.role, languages.language', false);
+                . 'users.firstname,users_profile.user_id, users_profile.views, users_profile.price, users_profile.language_id,location.location, users.lastname, users.email, users.phone, users.role, languages.language', false);
         $this->db->from('users_profile');
         $this->db->join('users', 'users_profile.user_id = users.id');
         $this->db->join('location', 'location.id = users_profile.location_id');
@@ -98,7 +98,15 @@ Class Profile extends CI_Model
         $query = $this->db->get('users_profile');
 		
         if($query->num_rows() > 0){
-            $this->db->update('users_profile', $data);
+            
+            if($data['views']){
+                $row = $query->row();;
+                $viewData['views'] = $row->views + 1;
+                $this->db->where('user_id', $data['user_id']);
+                $this->db->update('users_profile', $viewData);
+            } else {
+                $this->db->update('users_profile', $data);
+            }
         }else{
             $this->db->insert('users_profile', $data);
         }

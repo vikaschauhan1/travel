@@ -20,29 +20,30 @@ class Bookings extends CI_Controller {
 		{
 			$this->load->model('booking');
 			$this->load->model('location');
-            if($this->input->get('is_booking',0)){
-                $data['location_id'] = $this->input->get('location_id');
-                $data['guide_id'] = $this->input->get('guide_id');
-            }else{
-               $data['location_id'] = $this->input->post('location_id');
-                $data['guide_id'] = $this->input->post('guide_id'); 
-            }
+                        $this->load->model('profile');
+                        if($this->input->get('is_booking',0)){
+                            $data['location_id'] = $this->input->get('location_id');
+                            $data['guide_id'] = $this->input->get('guide_id');
+                        }else{
+                           $data['location_id'] = $this->input->post('location_id');
+                            $data['guide_id'] = $this->input->post('guide_id'); 
+                        }
+                        $this->profile->save_profile(array('user_id' => $data['guide_id'], 'views' => 1));
+                        $data['locationRow'] = $this->location->getLocationById($data['location_id']);
+                        $data['bookingPage'] = $this->input->post('bookingPage',0);
+                        $data['title'] = 'Bookings';
 
-            $data['locationRow'] = $this->location->getLocationById($data['location_id']);
-            $data['bookingPage'] = $this->input->post('bookingPage',0);
-            $data['title'] = 'Bookings';
-
-            $this->load->view('frontend/booking', $data);
+                         $this->load->view('frontend/booking', $data);
 		}
 		else
 		{
 			$this->load->model('booking');
 			$data['member_id'] = $this->session->userdata('id');
-            $data['guide_id'] = $this->input->post('guide_id');
-            $data['location_id'] = $this->input->post('location_id');
-            $data['submission_date'] = date('Y-m-d');
-            $data['booking_date'] = $this->input->post('booking_date');
-            $data['booking_detail'] = $this->input->post('booking_detail');
+                        $data['guide_id'] = $this->input->post('guide_id');
+                        $data['location_id'] = $this->input->post('location_id');
+                        $data['submission_date'] = date('Y-m-d');
+                        $data['booking_date'] = $this->input->post('booking_date');
+                        $data['booking_detail'] = $this->input->post('booking_detail');
             
 			$this->booking->saveBooking($data);
 			$this->session->set_flashdata('message', 'Guide has booked');

@@ -18,8 +18,11 @@
                         <th>Phone</th>
                         <th>Price</th>
                     </thead>
-                  <tbody><?$total = 0;?>
-                      <?foreach($allBookings as $booking):?>
+                  <tbody>
+                      <?php foreach($allBookings as $booking):?>
+                      <?php if(!isset($prices[$booking['booking_date']])):?>
+                        <?php $prices[$booking['booking_date']] = 0;?>
+                      <?php endif;?>
                       <tr>
                         <td><?=$booking['firstname'].$booking['lastname']?></td>
                         <td><?=$booking['booking_date']?></td>
@@ -27,9 +30,9 @@
                         <td><?=$booking['booking_detail']?></td>
                         <td><?=$booking['email']?></td>
                         <td><?=$booking['phone']?></td>
-                        <td>₹<?=$booking['price']?></td>
+                        <td><?=$booking['price']?></td>
                         <?
-                            $total += $prices[] = $booking['price'];
+                           $prices[$booking['booking_date']]+=$booking['price'];
                             $dates[] = $booking['booking_date'];
                         ?>
                       </tr>
@@ -291,11 +294,11 @@ Highcharts.chart('container', {
         name: 'Price List',
         colorByPoint: true,
         data: [
-            <?foreach($prices as $key => $price):?>
+            <?foreach($dates as $key => $date):?>
                 {
-                name: "<?=$dates[$key]?>",
-                y: <?=$price?>,
-                drilldown:"<?=$dates[$key]?>"
+                name: "<?=$date?>",
+                y: <?=$prices[$date]?>,
+                drilldown:"<?=$date?>"
             },
             <?endforeach;?>
     ]
