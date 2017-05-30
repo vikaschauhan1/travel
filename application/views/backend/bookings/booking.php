@@ -30,7 +30,7 @@
                         <td>₹<?=$booking['price']?></td>
                         <?
                             $total += $prices[] = $booking['price'];
-                            $dates[] = $booking['submission_date'];
+                            $dates[] = $booking['booking_date'];
                         ?>
                       </tr>
                      <?endforeach;?>
@@ -258,11 +258,10 @@ Highcharts.chart('container', {
         text: 'Click the columns to view versions. Source: <a href="http://netmarketshare.com">netmarketshare.com</a>.'
     },
     xAxis: {
-        
+        type: 'category',
         title: {
             text: 'Date Wise'
-        },
-        type: 'Date Wise'
+        }
     },
     yAxis: {
         title: {
@@ -289,13 +288,14 @@ Highcharts.chart('container', {
     },
 
     series: [{
-        name: 'Brands',
+        name: 'Price List',
         colorByPoint: true,
         data: [
             <?foreach($prices as $key => $price):?>
                 {
                 name: "<?=$dates[$key]?>",
                 y: <?=$price?>,
+                drilldown:"<?=$dates[$key]?>"
             },
             <?endforeach;?>
     ]
