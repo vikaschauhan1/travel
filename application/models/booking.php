@@ -32,10 +32,10 @@ Class Booking extends CI_Model
             $this->db->where('bookings.guide_id = ', $id);
         }else{
             $this->db->join('users', 'bookings.guide_id = users.id');
-            $this->db->join('users_profile', 'bookings.member_id = users_profile.user_id');
+            $this->db->join('users_profile', 'bookings.guide_id = users_profile.user_id');
             $this->db->where('bookings.member_id = ', $id);
         }
-        
+       
         $query = $this->db->get();
         
         if($query->num_rows() > 0){

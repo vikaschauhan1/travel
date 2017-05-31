@@ -1,7 +1,7 @@
 
         <div class="col-sm-10 col-md-11 main">
           <div class="row" style="margin-right:0px;">
-            <h1 class="page-header"><?php if($this->session->userdata('role') == 1) echo "User "; else if($this->session->userdata('role') == 2) echo "Guide "?>Booking List</h1>
+            <h1 class="page-header"><?php if($this->session->userdata('role') == 1) echo "User "; else echo "Guide "?>Booking List</h1>
           </div>
         
         <div class="row" >
@@ -10,7 +10,7 @@
                 <div class="panel-heading"><strong>Your Details</strong></div>
                 <table class="table table-bordered table-striped table-responsive">
                     <thead>
-                        <th>Person Name</th>
+                        <th><?php if($this->session->userdata('role') == 1) echo "Guide "; else echo "User "?> Name</th>
                         <th>Booking Date</th>
                         <th>Location</th>
                         <th>Booking Detail</th>

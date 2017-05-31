@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/myprojects/travel/application/controllers/admin/bookings.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/index.php</file>
+            <file>file:/E:/myprojects/travel/application/models/booking.php</file>
+            <file>file:/E:/myprojects/travel/application/views/backend/bookings/booking.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/admin/profiles.php</file>
+            <file>file:/E:/myprojects/travel/application/views/includes/navigation.php</file>
+            <file>file:/E:/myprojects/travel/application/views/backend/profile/profiles.php</file>
+            <file>file:/E:/myprojects/travel/application/models/profile.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/admin/access.php</file>
+            <file>file:/E:/myprojects/travel/application/views/frontend/index.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/bookings.php</file>
+        </group>
     </open-files>
 </project-private>

@@ -10,11 +10,9 @@ class Bookings extends CI_Controller {
 	function index(){
 		$this->load->model('users');
 		$details = $this->users->get_user_details($this->session->userdata('id'));
-        $this->view($details);
+                $this->view($details);
 	}
 	function view($details){
-        
-		
             $this->load->model('booking');
             $this->load->model('location');
             $isguide = $details->role == 1? false : true; 
