@@ -81,6 +81,11 @@ Class Users extends CI_Model
 		$this->db->where('id', $id);
 		$this->db->update('users', $crop_data);
 	}
+        
+        function resetPassword($data){
+            
+        }
+        
 	function create_user($data)
 	{
 		$crop_data = elements(array('firstname','lastname','email','phone','password','role'), $data);

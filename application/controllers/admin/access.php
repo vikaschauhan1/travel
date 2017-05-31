@@ -15,21 +15,19 @@ class Access extends CI_Controller {
 	}
 	function view($details){
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
-		
-		$this->form_validation->set_rules('gender', 'gender', 'required');
-		
-                $data['user_id'] = $this->session->userdata('id');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passagain]|md5');
+		$data['user_id'] = $this->session->userdata('id');
 
             if ($this->form_validation->run() == FALSE){
-                $data['main_content'] = 'backend/profile/profiles';
+                $data['main_content'] = 'backend/access/access';
                 $data['title'] = 'access';
                 $this->load->view('includes/template', $data);
-            }else{
-                    $this->load->model('profile');
-                    $data = $this->input->post();
-                    $this->users->save_profile($data);
-                    $this->session->set_flashdata('message', 'profile successfully saved');
-                    redirect('admin/profiles', 'refresh');
+            } else {
+                
+                $data = $this->input->post();
+                $this->users->resetPassword($data);
+                $this->session->set_flashdata('message', 'profile successfully saved');
+                redirect('admin/profiles', 'refresh');
             }
 		
         }
