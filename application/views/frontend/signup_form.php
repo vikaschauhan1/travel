@@ -37,7 +37,7 @@
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="/travel">Home</a></li>
+            <li role="presentation"><a href="/index.php">Home</a></li>
             <li role="presentation"><a href="<?php echo base_url('/index.php/login');?>">Login</a></li>            
             <li role="presentation"  class="active"><a href="<?php echo base_url('/index.php/signup');?>">Signup</a></li>
           </ul>
