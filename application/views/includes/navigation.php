@@ -29,7 +29,7 @@
             <li <?php if ($page == "access"){ echo "class='active'";} ?>>
               <a href="<?php echo base_url() ?>index.php/admin/access">
                 <div class="nav-icon"><span class="icon-switch"></span></div>
-                <div class="nav-title">Bookings</div>
+                <div class="nav-title">Access</div>
               </a>
             </li>
           </ul>
