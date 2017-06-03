@@ -112,9 +112,10 @@
       </div>
 
       <div class="container">
-      <div class="row">
+      
           <?if(count($guideRowset)>0):?>
-            <?foreach($guideRowset as $guideRow):?>
+            <? $fourcount = 0;foreach($guideRowset as $guideRow):?>
+            <?if($fourcount%4==0):?><div class="row"><?endif;?>
             <?php echo form_open('bookings/book') ?>
               <div class="col-sm-6 col-md-3">
                   <input type="hidden" name="guide_id" value="<?=$guideRow['user_id']?>">
@@ -134,22 +135,26 @@
                 </div>
               </div>
           </form>
+            <?if($fourcount%4==3):?></div><?endif;?>
+            <?$fourcount++;?>
             <?endforeach;?>
         <?else:?>
-        <div class="col-sm-10 col-md-10">
-            <div class="thumbnail" style='text-align: center;color: red'>
-                <style>
-                .footer {
-                    position: absolute;
-                    right: 25%;
-                    bottom: 8%;
-                    left: 13%;
-                    padding: 1rem;
-                    padding-right: 0;
-                    padding-left: 0;
-                }
-                </style>
-                Sorry! There is no Guide available at this location
+        <div class="row">
+            <div class="col-sm-10 col-md-10">
+                <div class="thumbnail" style='text-align: center;color: red'>
+                    <style>
+                    .footer {
+                        position: absolute;
+                        right: 25%;
+                        bottom: 8%;
+                        left: 13%;
+                        padding: 1rem;
+                        padding-right: 0;
+                        padding-left: 0;
+                    }
+                    </style>
+                    Sorry! There is no Guide available at this location
+                </div>
             </div>
         </div>
         <?endif;?>
