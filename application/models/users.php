@@ -1,31 +1,43 @@
 <?php
 Class Users extends CI_Model
 {
-	function validate($data)
+	function validate()
 	{
-	   $this->db->where('id', $data['id']);
-	   $this->db->where('password', MD5($data['oldpassword']));
+	   $this->db->where('email', $this->input->post('email'));
+	   $this->db->where('password', MD5($this->input->post('password')));
 
 	   $query = $this->db->get('users');
-           
-	    if ($query->num_rows() > 0){
-                return true;
-            }
-            else{
-                return false;
-            }die;
+
+	   if($query->num_rows != 0)
+	   {
+	     return true;
+	   }
 
 	 }
+         function validatePassword($data){
+            $this->db->where('id', $data['id']);
+            $this->db->where('password', MD5($data['oldpassword']));
+
+            $query = $this->db->get('users');
+
+             if ($query->num_rows() > 0){
+                 return true;
+             }
+             else{
+                 return false;
+             }
+
+         }
 	function mail_exists($key)
 	{
-            $this->db->where('email',$key);
-            $query = $this->db->get('users');
-            if ($query->num_rows() > 0){
-                return true;
-            }
-            else{
-                return false;
-            }
+    $this->db->where('email',$key);
+    $query = $this->db->get('users');
+    if ($query->num_rows() > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
 	}
 	function show_users($limit, $start)
 	{
@@ -85,10 +97,7 @@ Class Users extends CI_Model
 	}
         
         function resetPassword($data){
-            $crop_data = array('password' => MD5($data['password'])); 
-            $this->db->where('id', $data['id']);
-            echo $this->db->last_query();die;
-            $this->db->update('users', $crop_data);
+            
         }
         
 	function create_user($data)

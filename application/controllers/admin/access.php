@@ -39,7 +39,7 @@ class Access extends CI_Controller {
             $data['id'] = $this->session->userdata('id');
             $data['oldpassword'] = $this->input->post('old_password');
             
-            return  $this->users->validate($data);
+            return  $this->users->validatePassword($data);
         }
 	
 
