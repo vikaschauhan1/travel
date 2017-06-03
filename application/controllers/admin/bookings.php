@@ -24,8 +24,13 @@ class Bookings extends CI_Controller {
             $this->load->view('includes/template', $data);
 		
 	}
-
-
+        
+        function rating(){
+            $this->load->model('booking');
+            $data = $this->input->Post();
+            $data['member_id'] = $this->session->userdata('id');
+            return $this->booking->saveRating($data);
+       }
 
 	private function is_logged_in()
 	{
