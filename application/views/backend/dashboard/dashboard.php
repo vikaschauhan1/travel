@@ -29,7 +29,28 @@
                 </table>
               </div>
             </div>
+              <?php if($this->session->userdata('role') == 2):?>
+              <div class="col-md-2">
+                    <div class="metric">
+                            <span class="icon"><i class="fa fa-eye"></i></span>
+                            <p>
+                                <strong> <span class="number"></span>
+                                    <span class="title"><?echo $users_profile->views?> Views</span></strong>
+                            </p>
+                    </div>
+            </div>
+               <div class="col-md-3">
+                    <div class="metric">
+                            <span class="icon"><i class="fa fa-star-o"></i></span>
+                            <p>
+                                <strong> <span class="number"></span>
+                                    <span class="title"> Avg Rating <?echo $rating->avgrating?></span></strong>
+                            </p>
+                    </div>
+            </div>
+              <?endif;?>
               
           </div>
             
          </div>
+

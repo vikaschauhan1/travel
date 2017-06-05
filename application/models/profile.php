@@ -15,6 +15,19 @@ Class Profile extends CI_Model
                 return array();
 	 	
 	}
+        
+        function getAvgRating($id){
+            $this->db->select('AVG(rating) as avgrating',false);
+            $this->db->from('ratings');
+          $this->db->where('guide_id = ', $id);
+        $query = $this->db->get();	
+        if($query->num_rows() > 0){
+                
+            $row = $query->row();
+                    return $row;
+            }
+                return array();  
+        }
     
     function getGuidesByLocation($locationId = 0, $languageId = 0, $priceFilter = 0){
         

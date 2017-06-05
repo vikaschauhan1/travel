@@ -243,3 +243,51 @@ thead {
     .rating:not(:hover) > :checked ~ label:before{
         opacity: 1;
     }
+    metric .number {
+    display: block;
+    font-size: 28px;
+    font-weight: 300;
+}
+.metric .title {
+    font-size: 16px;
+}
+.metric p {
+    margin-bottom: 27px;
+   
+    text-align: center;
+}
+.metric .icon {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #0081c2;
+    text-align: center;
+}
+.metric {
+    padding: 20px;
+    border: 1px solid #323f46;
+}
+.metric, .panel.panel-scrolling .btn-bottom {
+    margin-bottom: 30px;
+}
+.metric, .panel {
+    
+    border-radius: 3px;
+}
+   
+.metric .icon i {
+    font-size: 18px;
+    color: #fff;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+   
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    
+}

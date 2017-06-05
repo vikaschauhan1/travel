@@ -10,7 +10,10 @@ class Dashboard extends CI_Controller {
 	function index(){
 
 		$this->load->model('users');
+		$this->load->model('profile');
 		$data['details'] = $this->users->get_user_details($this->session->userdata('id'));
+                $data['users_profile'] = $this->profile->get_profile($this->session->userdata('id'));
+                $data['rating'] = $this->profile->getAvgRating($this->session->userdata('id'));
 		$data['main_content'] = 'backend/dashboard/dashboard';
 		$data['title'] = 'Dashboard';
 		$this->load->view('includes/template', $data);
