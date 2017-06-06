@@ -29,7 +29,7 @@ Class Profile extends CI_Model
                 return array();  
         }
     
-    function getGuidesByLocation($locationId = 0, $languageId = 0, $priceFilter = 0){
+    function getGuidesByLocation($locationId = 0, $languageId = 0, $priceFilter = 0, $genderFilter = 0, $ageFilter = 0, $expFilter = 0){
         
         $this->db->select('users_profile.id, users_profile.location_id,users_profile.about_me, users_profile.age, users_profile.gender, '
                 . 'users.firstname,users_profile.user_id, users_profile.views, users_profile.price, users_profile.language_id,location.location, '
@@ -57,6 +57,30 @@ Class Profile extends CI_Model
                 $this->db->where('users_profile.price <= ', $pricefilterRange['price_to']);
             }
         }
+        if($genderFilter){
+            $this->db->where('users_profile.gender = ', $genderFilter);
+        }
+        
+        if($ageFilter){
+            $agefilterRange = $this->getAgeFilter($ageFilter);
+            if($agefilterRange['age_from']){
+                $this->db->where('users_profile.age >= ', $agefilterRange['age_from']);
+            }
+            if($agefilterRange['age_to']){
+                $this->db->where('users_profile.age <= ', $agefilterRange['age_to']);
+            }
+        }
+        
+        if($expFilter){
+            $expfilterRange = $this->getExpFilter($expFilter);
+            if($expfilterRange['exp_from']){
+                $this->db->where('users_profile.experience >= ', $expfilterRange['exp_from']);
+            }
+            if($expfilterRange['exp_to']){
+                $this->db->where('users_profile.experience <= ', $expfilterRange['exp_to']);
+            }
+        }
+        
         $this->db->order_by("ratings.rating", "desc");
         $query = $this->db->get();
 
@@ -66,6 +90,44 @@ Class Profile extends CI_Model
         }
         
         return array();
+        
+    }
+    
+    function getAgeFilter($ageFilter){
+        $ageFilterRange = array();
+        
+        switch($ageFilter){
+            case 1:
+                $ageFilterRange['age_from'] = 21;
+                $ageFilterRange['age_to'] = 25;
+            break;
+            case 2:
+                $ageFilterRange['age_from'] = 26;
+                $ageFilterRange['age_to'] = 30;
+            break;
+            case 3:
+                $ageFilterRange['age_from'] = 31;
+                $ageFilterRange['age_to'] = 35;
+            break;
+            case 4:
+                $ageFilterRange['age_from'] = 36;
+                $ageFilterRange['age_to'] = 40;
+            break;
+            case 5:
+                $ageFilterRange['age_from'] = 41;
+                $ageFilterRange['age_to'] = 45;
+            break;
+            case 6:
+                $ageFilterRange['age_from'] = 46;
+                $ageFilterRange['age_to'] = 50;
+            break;
+            case 7:
+                $ageFilterRange['age_from'] = 51;
+                $ageFilterRange['age_to'] = 0;
+            break;
+                
+        }
+        return $ageFilterRange;
         
     }
     function getPriceRangeFilter($priceFilter){
@@ -106,6 +168,46 @@ Class Profile extends CI_Model
         return $pricefilterRange;
         
     }
+    
+    function getExpFilter($expFilter){
+        
+        $agefilterRange = array();
+        
+        switch($expFilter){
+            case 1:
+                $agefilterRange['exp_from'] = 1;
+                $agefilterRange['exp_to'] = 3;
+            break;
+            case 2:
+                $agefilterRange['exp_from'] = 4;
+                $agefilterRange['exp_to'] = 7;
+            break;
+            case 3:
+                $agefilterRange['exp_from'] = 8;
+                $agefilterRange['exp_to'] = 11;
+            break;
+            case 4:
+                $agefilterRange['exp_from'] = 12;
+                $agefilterRange['exp_to'] = 15;
+            break;
+            case 5:
+                $agefilterRange['exp_from'] = 16;
+                $agefilterRange['exp_to'] = 19;
+            break;
+            case 6:
+                $agefilterRange['exp_from'] = 20;
+                $agefilterRange['exp_to'] = 23;
+            break;
+            case 7:
+                $agefilterRange['exp_from'] = 24;
+                $agefilterRange['exp_to'] = 0;
+            break;
+                
+        }
+        return $agefilterRange;
+        
+    }
+
 	      
 	function save_profile($data){         
             

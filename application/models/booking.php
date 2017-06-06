@@ -38,6 +38,21 @@ Class Booking extends CI_Model
             }
             return true;
         }
+        
+        function getEarning($id){
+            $this->db->select('sum(users_profile.price) as price, bookings.guide_id', false);
+            $this->db->join('users_profile', 'bookings.guide_id = users_profile.user_id');
+            $this->db->from('bookings');
+            $this->db->where('bookings.guide_id = ', $id);
+            $query = $this->db->get();
+        
+            if($query->num_rows() > 0){
+                $rows = $query->row();
+                return $rows;
+            }
+
+            return array();
+        }
     
     function getBookingDetail($id, $isGuide = false){
         

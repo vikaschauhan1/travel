@@ -100,6 +100,48 @@
                                   </select>
 
                             </div>
+                            <div class="col-sm-4 col-md-4">
+                                <label for="gender">Gender</label>
+                                  <select class="form-control" name='gender' id="gender">
+                                      <option value="0">--Select--</option>
+                                      <option value="male" <?if($this->input->post('gender') == "male"):?>selected <?endif;?>>male</option>
+                                      <option value="female" <?if($this->input->post('gender') == "female"):?>selected <?endif;?>>female</option>
+                                     
+                                  </select>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-5 col-md-5">
+                                <label for="age">Age</label>
+                                  <select class="form-control" name='age' id="age">
+                                      <option value="0">--Select Age--</option>
+                                      <option value="1" <?if($this->input->post('age') == "1"):?>selected <?endif;?>>21-25 years</option>
+                                      <option value="2" <?if($this->input->post('age') == "2"):?>selected <?endif;?>>26-30 years</option>
+                                      <option value="3" <?if($this->input->post('age') == "3"):?>selected <?endif;?>>31-35 years</option>
+                                      <option value="4" <?if($this->input->post('age') == "4"):?>selected <?endif;?>>36-40 years</option>
+                                      <option value="5" <?if($this->input->post('age') == "5"):?>selected <?endif;?>>41-45 years</option>
+                                      <option value="6" <?if($this->input->post('age') == "6"):?>selected <?endif;?>>46-50 years</option>
+                                      <option value="7"> <?if($this->input->post('age') == "7"):?>selected <?endif;?>> 50 years</option>
+                                    
+                                  </select>
+
+                            </div>
+                            <div class="col-sm-5 col-md-5">
+                                <label for="experience">Experience</label>
+                                  <select class="form-control" name='experience' id="experience">
+                                      <option value="0">--Select--</option>
+                                      <option value="1" <?if($this->input->post('experience') == "1"):?>selected <?endif;?>>1-3 years</option>
+                                      <option value="2" <?if($this->input->post('experience') == "2"):?>selected <?endif;?>>4-7 years</option>
+                                      <option value="3" <?if($this->input->post('experience') == "3"):?>selected <?endif;?>>8-11 years</option>
+                                      <option value="4" <?if($this->input->post('experience') == "4"):?>selected <?endif;?>>12-15 years</option>
+                                      <option value="5" <?if($this->input->post('experience') == "5"):?>selected <?endif;?>>16-19 years</option>
+                                      <option value="6" <?if($this->input->post('experience') == "6"):?>selected <?endif;?>>20-23 years</option>
+                                      <option value="7"> <?if($this->input->post('experience') == "7"):?>selected <?endif;?>> 24 years</option>
+                                    
+                                  </select>
+
+                            </div>
                           </div>
 
                           <div class="col-sm-12 col-md-12"><hr>

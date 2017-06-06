@@ -24,6 +24,17 @@ class Bookings extends CI_Controller {
             $this->load->view('includes/template', $data);
 		
 	}
+        function earning(){
+            $this->load->model('booking');
+            
+            $data['earning'] = $this->booking->getEarning($this->session->userdata('id'));
+            
+            $data['main_content'] = 'backend/bookings/earning';
+            $data['title'] = 'earning';
+			
+            $this->load->view('includes/template', $data);
+		
+	}
         
         function rating(){
             $this->load->model('booking');

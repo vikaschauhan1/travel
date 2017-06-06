@@ -7,10 +7,12 @@
             <file>file:/E:/myprojects/travel/application/views/frontend/index.php</file>
             <file>file:/E:/myprojects/travel/application/views/includes/header.php</file>
             <file>file:/E:/myprojects/travel/application/config/database.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/admin/dashboard.php</file>
             <file>file:/E:/myprojects/travel/application/controllers/signup.php</file>
             <file>file:/E:/myprojects/travel/application/controllers/login.php</file>
             <file>file:/E:/myprojects/travel/application/views/backend/access/access.php</file>
             <file>file:/E:/myprojects/travel/application/models/users.php</file>
+            <file>file:/E:/myprojects/travel/application/views/backend/dashboard/dashboard.php</file>
             <file>file:/E:/myprojects/travel/application/controllers/index.php</file>
             <file>file:/E:/myprojects/travel/application/models/booking.php</file>
             <file>file:/E:/myprojects/travel/application/views/backend/bookings/booking.php</file>
@@ -19,6 +21,7 @@
             <file>file:/E:/myprojects/travel/css/dashboard.css</file>
             <file>file:/E:/myprojects/travel/application/controllers/admin/access.php</file>
             <file>file:/E:/myprojects/travel/application/config/autoload.php</file>
+            <file>file:/E:/myprojects/travel/css/font-awesome.min.css.css</file>
         </group>
     </open-files>
 </project-private>

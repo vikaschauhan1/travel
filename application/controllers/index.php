@@ -20,7 +20,11 @@ class Index extends CI_Controller {
                $data['selectedlocation'] = $this->input->Post('location');
                $data['selectedlanguage'] = $this->input->Post('language_id');
                $data['price'] = $this->input->Post('price');
-               $data['guideRowset'] = $this->profile->getGuidesByLocation($data['selectedlocation'], $data['selectedlanguage'], $data['price']);
+               $data['gender'] = $this->input->Post('gender');
+               $data['age'] = $this->input->Post('age');
+               $data['experience'] = $this->input->Post('experience');
+               $data['guideRowset'] = $this->profile->getGuidesByLocation($data['selectedlocation'], $data['selectedlanguage'], $data['price'], 
+                       $data['gender'], $data['age'], $data['experience']);
            }else{
                $data['guideRowset'] = $this->profile->getGuidesByLocation();
            }
