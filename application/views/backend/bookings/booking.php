@@ -3,7 +3,7 @@
           <div class="row" style="margin-right:0px;">
             <h1 class="page-header"><?php if($this->session->userdata('role') == 1) echo "User "; else echo "Guide "?>Booking List</h1>
           </div>
-        
+        <?$this->load->model('booking');?>
         <div class="row" >
             <div class="col-md-12" style="padding-left:0px;">
               <div class="panel panel-default">
@@ -38,17 +38,20 @@
                         ?>
                         <?php if($this->session->userdata('role') == 1):?>
                         <td>
+                            <?
+                               $ratingResult = $this->booking->getRating(array('member_id' => $this->session->userdata('id'), 'guide_id' => $booking['guide_id']));
+                            ?>
                             <div class="wrapper">
                                 <span class="rating">
-                                    <input id="rating5<?echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($booking['rating']) && $booking['rating'] == 5):?>checked="checked" <?endif;?> value="5" onclick="setrank(this)">
+                                    <input id="rating5<?echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($ratingResult->rating) && $ratingResult->rating == 5):?>checked="checked" <?endif;?> value="5" onclick="setrank(this)">
                                     <label for="rating5<?echo $index;?>">5</label>
-                                    <input id="rating4<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($booking['rating']) && $booking['rating'] == 4):?>checked="checked" <?endif;?> value="4" onclick="setrank(this)">
+                                    <input id="rating4<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($ratingResult->rating) && $ratingResult->rating == 4):?>checked="checked" <?endif;?> value="4" onclick="setrank(this)">
                                     <label for="rating4<? echo $index;?>">4</label>
-                                    <input id="rating3<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($booking['rating']) && $booking['rating'] == 3):?>checked="checked" <?endif;?> value="3" onclick="setrank(this)">
+                                    <input id="rating3<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($ratingResult->rating) && $ratingResult->rating == 3):?>checked="checked" <?endif;?> value="3" onclick="setrank(this)">
                                     <label for="rating3<? echo $index;?>">3</label>
-                                    <input id="rating<? echo $index;?>2" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($booking['rating']) && $booking['rating'] == 2):?>checked="checked" <?endif;?> value="2" onclick="setrank(this)">
+                                    <input id="rating2<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($ratingResult->rating) && $ratingResult->rating == 2):?>checked="checked" <?endif;?> value="2" onclick="setrank(this)">
                                     <label for="rating2<?echo $index;?>">2</label>
-                                    <input id="rating1<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($booking['rating']) && $booking['rating'] == 1):?>checked="checked" <?endif;?> value="1" onclick="setrank(this)">
+                                    <input id="rating1<? echo $index;?>" type="radio" name="rating<?echo $index;?>" data-guide="<?echo $booking['guide_id']?>" <? if(isset($ratingResult->rating) && $ratingResult->rating == 1):?>checked="checked" <?endif;?> value="1" onclick="setrank(this)">
                                     <label for="rating1<?echo $index;?>">1</label>
                                 </span>
                            </div>

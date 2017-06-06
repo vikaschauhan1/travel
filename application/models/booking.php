@@ -43,19 +43,19 @@ Class Booking extends CI_Model
         
         $this->db->select('bookings.member_id,bookings.guide_id, bookings.booking_date, bookings.booking_detail,'
                 . 'bookings.location_id, users.lastname, users.firstname,users.email, users.phone,'
-                . ' bookings.submission_date,location.location, users_profile.price, ratings.rating', false);
+                . ' bookings.submission_date,location.location, users_profile.price', false);
         $this->db->from('bookings');
         $this->db->join('location', 'bookings.location_id = location.id');
         
         if($isGuide){
             $this->db->join('users', 'bookings.member_id = users.id');
             $this->db->join('users_profile', 'bookings.guide_id = users_profile.user_id');
-            $this->db->join('ratings', 'ratings.guide_id = bookings.guide_id', 'left');
+            
             $this->db->where('bookings.guide_id = ', $id);
         }else{
             $this->db->join('users', 'bookings.guide_id = users.id');
             $this->db->join('users_profile', 'bookings.guide_id = users_profile.user_id');
-            $this->db->join('ratings', 'ratings.guide_id = bookings.guide_id', 'left');
+            
             $this->db->where('bookings.member_id = ', $id);
         }
        
@@ -68,6 +68,16 @@ Class Booking extends CI_Model
         
         return array();
         
+    }
+    function getRating($data){
+            $whereCond = array('guide_id' => $data['guide_id'], 'member_id' => $data['member_id']);
+            
+            $this->db->where($whereCond);         
+            $query = $this->db->get('ratings');
+            if($query->num_rows() > 0){
+                return $query->row();
+            }
+            return array();
     }
 	      
 	function saveBooking($data){ 

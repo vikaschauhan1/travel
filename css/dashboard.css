@@ -243,7 +243,7 @@ thead {
     .rating:not(:hover) > :checked ~ label:before{
         opacity: 1;
     }
-    metric .number {
+    .metric .number {
     display: block;
     font-size: 28px;
     font-weight: 300;
@@ -264,7 +264,7 @@ thead {
     width: 50px;
     height: 50px;
     line-height: 50px;
-    background-color: #0081c2;
+    background-color: #4d5e67;
     text-align: center;
 }
 .metric {
