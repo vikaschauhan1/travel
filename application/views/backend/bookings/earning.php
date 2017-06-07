@@ -7,7 +7,7 @@
         <div class="row" >
             <div class="col-md-12" style="padding-left:0px;">
               <div class="panel panel-default">
-                <div class="panel-heading"><strong> Your Total Earning = <?echo isset($earning->price) ? $earning->price.' ₹' : ''?></strong></div>
+                <div class="panel-heading"><strong> Your Total Earning = <?echo isset($earning->price) ? $earning->price.' ₹' : 0?></strong></div>
                </div>
             </div>
             

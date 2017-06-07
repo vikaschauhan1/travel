@@ -1,4 +1,7 @@
 <?php $page = $this->uri->segment(2);
+if(!empty($this->uri->segment(3))){
+    $page = $this->uri->segment(3);
+}
 ?>
  <div class="col-sm-2 col-md-1 sidebar">
           <ul class="nav nav-sidebar">

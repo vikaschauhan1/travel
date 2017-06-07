@@ -222,6 +222,7 @@ Class Profile extends CI_Model
                 $this->db->where('user_id', $data['user_id']);
                 $this->db->update('users_profile', $viewData);
             } else {
+                $this->db->where('user_id', $data['user_id']);
                 $this->db->update('users_profile', $data);
             }
         }else{
