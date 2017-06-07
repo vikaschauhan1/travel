@@ -46,10 +46,10 @@ Class Profile extends CI_Model {
 
         $this->db->select('users_profile.id, users_profile.location_id,users_profile.about_me, users_profile.age, users_profile.gender, '
                 . 'users.firstname,users_profile.user_id, users_profile.views, users_profile.price, users_profile.language_id,location.location, '
-                . 'users.lastname, users.email, users.phone, users.role, languages.language, ratings.rating', false);
+                . 'users.lastname, users.email, users.phone, users.role, languages.language', false);
         $this->db->from('users_profile');
         $this->db->join('users', 'users_profile.user_id = users.id');
-        $this->db->join('ratings', 'ratings.guide_id = users.id', 'left');
+        
         $this->db->join('location', 'location.id = users_profile.location_id');
         $this->db->join('languages', 'users_profile.language_id = languages.id');
         $this->db->where('users.role = ', '2');
@@ -94,7 +94,6 @@ Class Profile extends CI_Model {
             }
         }
 
-        $this->db->order_by("ratings.rating", "desc");
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
