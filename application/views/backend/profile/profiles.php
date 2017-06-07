@@ -30,6 +30,10 @@
                 <input type="checkbox" class="" id="female" name="gender" value="female" <?if(isset($profile->gender) && $profile->gender == 'female'):?>checked="checked" <?endif;?>>Female
                 
               </div>
+             <div class="form-group">
+                <label for="experience">Experience</label>
+                <input type="number" class="form-control" id="experience" max="100" min="0" placeholder="experience" name="experience" value="<?php echo isset($profile->experience) ? $profile->experience : ''; ?>">
+              </div>
               <div class="form-group">
                 <label for="location">Location</label>
                 <select class="form-control" name='location'>

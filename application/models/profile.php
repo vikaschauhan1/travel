@@ -216,7 +216,7 @@ Class Profile extends CI_Model
 		
         if($query->num_rows() > 0){
             
-            if($data['views']){
+            if(isset($data['views'])){
                 $row = $query->row();;
                 $viewData['views'] = $row->views + 1;
                 $this->db->where('user_id', $data['user_id']);
