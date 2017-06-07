@@ -48,6 +48,15 @@
                             </p>
                     </div>
             </div>
+              <div class="col-md-2">
+                    <div class="metric" style=" background: rgba(51, 122, 183, 0.68);">
+                            <span class="icon"><i class="icon-trophy"></i></span>
+                            <p>
+                                <strong> <span class="number"></span>
+                                    <span class="title">Rank&nbsp;<?echo !empty($rank->rank) ? $rank->rank : 0;?></span></strong>
+                            </p>
+                    </div>
+            </div>
               <?endif;?>
               
           </div>
