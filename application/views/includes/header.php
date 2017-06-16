@@ -46,9 +46,10 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-md-12 top-nav">
-          <ul>
+        <ul>
             <li> <a href="<?php echo base_url(); ?>index.php/login/logout"><span class="icon-switch"></span></a></li>
-          </ul>
+            <li> <a href="<?php echo base_url(); ?>index.php">Home</a></li>
+        </ul>
 
         </div>
       </div>
