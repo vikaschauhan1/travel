@@ -53,7 +53,9 @@ Class Profile extends CI_Model {
         $this->db->join('location', 'location.id = users_profile.location_id');
         
         $this->db->where('users.role = ', '2');
-
+        
+        $languageId = array_filter($languageId);
+        
         if (!empty($languageId)) {
             $this->db->where('FIND_IN_SET('.$languageId[0].',users_profile.language_id)!=',0);
             unset($languageId[0]);

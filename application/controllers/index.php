@@ -18,7 +18,7 @@ class Index extends CI_Controller {
            $data['selectedlanguage'] = array();
             if($this->input->Post('search')){
                $data['selectedlocation'] = $this->input->Post('location');
-               $data['selectedlanguage'] = $this->input->Post('language_id');
+               $data['selectedlanguage'] = $this->input->Post('language_id') ? $this->input->Post('language_id') : array();
                $data['price'] = $this->input->Post('price');
                $data['gender'] = $this->input->Post('gender');
                $data['age'] = $this->input->Post('age');
