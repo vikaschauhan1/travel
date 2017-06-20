@@ -52,7 +52,7 @@
               </div>
               <div class="form-group">
                 <label for="bookingDetail">Booking Detail</label>
-                <textarea class="form-control" id="bookingDetail" placeholder="Booking Detail" name="booking_detail" value="<?php echo set_value('booking_detail'); ?>"><?php echo set_value('booking_detail'); ?></textarea>
+                <textarea class="form-control" id="bookingDetail" placeholder="Booking Detail" name="booking_detail" value="<?php echo isset($bookingDetail) ? $bookingDetail : '' ?>"><?php echo isset($bookingDetail) ? $bookingDetail : '' ?></textarea>
                 <?php echo form_error('booking_detail'); ?>
               </div>                                         
               <div class="form-group">
@@ -72,6 +72,22 @@
                 <?if($bookingPage):?>
                     <?php echo form_error('booking_date'); ?>
                 <?endif;?>
+              </div>
+              <div class="form-group">
+                <label for="number_of_persons">Number Of Persons</label>
+                <input type="number" class="form-control" id="number_of_persons" name="number_of_persons" value="<?php echo isset($numberOfPerson) ? $numberOfPerson : 0 ?>">
+                <?php echo form_error('number_of_persons'); ?>
+              </div>
+              <div class="form-group">
+                <label for="number_day_night">Number Of Day/Night</label>
+                <input type="number" class="form-control" id="number_of_persons" name="number_day_night" value="<?php echo isset($numberOfDaynight) ? $numberOfDaynight : 0; ?>">
+                <?php echo form_error('number_day_night'); ?>
+              </div>
+              <div class="form-group">
+                <label for="hotel_booking">Hotel Booking</label>&nbsp;
+                <input type="radio" class=""  name="hotel_booking" value="1" <?if(set_value('hotel_booking') == 1):?> checked="checked"<?endif;?>>Yes
+                <input type="radio" class=""  name="hotel_booking" value="0" <?if(set_value('hotel_booking') == 0):?> checked="checked"<?endif;?>>No
+                
               </div>
                 <div class="form-group" style='margin-left: 32%;'>
                     <a class="btn btn-danger" href='../' type='button'>Cancel </a>&nbsp;

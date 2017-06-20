@@ -97,12 +97,13 @@ Class Booking extends CI_Model
 	      
 	function saveBooking($data){ 
         
-        $whereCond = array('guide_id' => $data['guide_id'], 'member_id' => $data['member_id']);
+        $whereCond = array('guide_id' => $data['guide_id'], 'member_id' => $data['member_id'], 'booking_date' => $data['booking_date']);
 
         $this->db->where($whereCond);         
         $query = $this->db->get('bookings');
         
         if($query->num_rows() > 0){
+            $this->db->where($whereCond); 
            $this->db->update('bookings', $data);
         }else{
             $this->db->insert('bookings', $data);
