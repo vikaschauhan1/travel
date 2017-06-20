@@ -19,7 +19,7 @@ class Profiles extends CI_Controller {
 		$this->form_validation->set_rules('gender', 'gender', 'required');
 		$data['role'] = $this->session->userdata('role');
         $data['user_id'] = $this->session->userdata('id');
-
+        
             if ($this->form_validation->run() == FALSE){
                     
             $this->load->model('location');
@@ -38,6 +38,7 @@ class Profiles extends CI_Controller {
 		}else{
 			$this->load->model('profile');
 			$data = $this->input->post();
+            $data['language_id'] = implode(",",  array_filter($this->input->post('language_id')));
             $data['location_id'] = $data['location'];
             unset($data['location']);
             $this->profile->save_profile($data);

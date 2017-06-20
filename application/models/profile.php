@@ -42,20 +42,24 @@ Class Profile extends CI_Model {
         return array();
     }
 
-    function getGuidesByLocation($locationId = 0, $languageId = 0, $priceFilter = 0, $genderFilter = 0, $ageFilter = 0, $expFilter = 0) {
+    function getGuidesByLocation($locationId = 0, $languageId = array(), $priceFilter = 0, $genderFilter = 0, $ageFilter = 0, $expFilter = 0) {
 
         $this->db->select('users_profile.id, users_profile.location_id,users_profile.about_me, users_profile.age, users_profile.gender, '
                 . 'users.firstname,users_profile.user_id, users_profile.views, users_profile.price, users_profile.language_id,location.location, '
-                . 'users.lastname, users.email, users.phone, users.role, languages.language', false);
+                . 'users.lastname, users.email, users.phone, users.role', false);
         $this->db->from('users_profile');
         $this->db->join('users', 'users_profile.user_id = users.id');
         
         $this->db->join('location', 'location.id = users_profile.location_id');
-        $this->db->join('languages', 'users_profile.language_id = languages.id');
+        
         $this->db->where('users.role = ', '2');
 
-        if ($languageId) {
-            $this->db->where('users_profile.language_id = ', $languageId);
+        if (!empty($languageId)) {
+            $this->db->where('FIND_IN_SET('.$languageId[0].',users_profile.language_id)!=',0);
+            unset($languageId[0]);
+            foreach($languageId as $language){
+             $this->db->or_where('FIND_IN_SET('.$language.',users_profile.language_id)!=',0);
+            }
         }
         if ($locationId) {
             $this->db->where('users_profile.location_id = ', $locationId);

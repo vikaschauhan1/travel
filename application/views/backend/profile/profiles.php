@@ -26,8 +26,8 @@
               
               <div class="form-group">
                 <label for="gender">Gender</label>
-                <input type="checkbox" class="" id="male" name="gender" value="male" <?if(isset($profile->gender) && $profile->gender == 'male'):?>checked="checked" <?endif;?>>Male
-                <input type="checkbox" class="" id="female" name="gender" value="female" <?if(isset($profile->gender) && $profile->gender == 'female'):?>checked="checked" <?endif;?>>Female
+                <input type="radio" class="" id="male" name="gender" value="male" <?if(isset($profile->gender) && $profile->gender == 'male'):?>checked="checked" <?endif;?>>Male
+                <input type="radio" class="" id="female" name="gender" value="female" <?if(isset($profile->gender) && $profile->gender == 'female'):?>checked="checked" <?endif;?>>Female
                 
               </div>
             <?if($role == 2):?>
@@ -52,10 +52,14 @@
             <?if($role == 2):?>
               <div class="form-group">
                 <label for="language">Language Proficiency</label>
-                <select class="form-control" name='language_id'>
-                    <option>--Select Language--</option>
+                <select class="form-control" name='language_id[]' multiple="multiple">
+                    <option value="">--Select Language--</option>
+                    <?$languageIds = array();?>
+                    <?if(isset($profile->language_id)):?>
+                        <?$languageIds = explode(",", $profile->language_id); ?>
+                    <?endif;?>
                   <?foreach($languages as $languageRow):?>
-                    <option value="<?=$languageRow['id']?>" <?if(isset($profile->language_id) && $languageRow['id'] == $profile->language_id):?>selected <?endif?>><?=$languageRow['language']?></option>
+                    <option value="<?=$languageRow['id']?>" <?if(in_array($languageRow['id'], $languageIds)):?>selected <?endif?>><?=$languageRow['language']?></option>
                   <?endforeach;?>
                 </select>
               </div>

@@ -75,10 +75,10 @@
                             </div>
                             <div class="col-sm-5 col-md-5">
                                 <label for="language">Language</label>
-                                  <select class="form-control" name='language_id'>
-                                      <option value="0">--Select Language--</option>
+                                <select class="form-control" name='language_id[]' multiple="multiple">
+                                      <option value="">--Select Language--</option>
                                     <?foreach($languages as $languageRow):?>
-                                      <option value="<?=$languageRow['id']?>" <?if($selectedlanguage == $languageRow['id']):?>selected<?endif;?>><?=$languageRow['language']?></option>
+                                      <option value="<?=$languageRow['id']?>" <?if(in_array($languageRow['id'], $selectedlanguage)):?>selected<?endif;?>><?=$languageRow['language']?></option>
                                     <?endforeach;?>
                                   </select>
 
@@ -154,7 +154,7 @@
       </div>
 
       <div class="container">
-      
+      <?$this->load->model('language');?>
           <?if(count($guideRowset)>0):?>
             <? $fourcount = 0;foreach($guideRowset as $guideRow):?>
             <?if($fourcount%4==0):?><div class="row"><?endif;?>
@@ -168,7 +168,8 @@
                     <p><?=$guideRow['about_me']?></p>
                     <p><b>Email:</b><?=$guideRow['email']?></p>
                     <p><b>Views:</b><?=$guideRow['views']?></p>
-                    <p><b>Language proficiency:</b><?=$guideRow['language']?></p>
+                    <?$languageRow = $this->language->getLanguagesByIds(explode(",", $guideRow['language_id']));?>
+                    <p><b>Language proficiency:</b><?=$languageRow->language?></p>
                     <p><b>Location:</b><?=$guideRow['location']?></p>
                     <p><b>Contact Number:</b><?=$guideRow['phone']?></p>
                     <p><input type="submit" value="Book Now" class="btn btn-primary" >
