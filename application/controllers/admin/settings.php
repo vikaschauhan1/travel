@@ -18,6 +18,10 @@ class Settings extends CI_Controller {
 		$this->form_validation->set_rules('lastname', 'Last Name', 'required');
 		$this->form_validation->set_rules('email', 'Email Id', 'required|users.unique');
 		$this->form_validation->set_rules('phone', 'Phone Number', 'required');
+		$this->form_validation->set_rules('Adhar_no', 'Aadhar Number', 'required');
+		$this->form_validation->set_rules('licence_no', 'Licence Number', 'required');
+		$this->form_validation->set_rules('valid_up_to', 'Date', 'required');
+		$this->form_validation->set_rules('induction_year', 'Induction Year', 'required');
 		
 		if ($this->form_validation->run() == FALSE)
 		{

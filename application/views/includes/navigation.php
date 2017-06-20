@@ -35,11 +35,13 @@ if(!empty($this->uri->segment(3))){
                 <div class="nav-title">Access</div>
               </a>
             </li>
+            <?if($this->session->userdata('role') == 2):?>
             <li <?php if ($page == "earning"){ echo "class='active'";} ?>>
               <a href="<?php echo base_url() ?>index.php/admin/bookings/earning">
                 <div class="nav-icon"><span class="fa fa-money"></span></div>
                 <div class="nav-title">Earning</div>
               </a>
             </li>
+            <?endif;?>
           </ul>
 </div>
