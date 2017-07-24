@@ -55,9 +55,28 @@ class Bookings extends CI_Controller {
             
             $this->booking->saveBooking($data);
             $this->session->set_flashdata('message', 'Guide has booked');
-
-            redirect('admin/bookings', 'refresh');
+            
+            redirect('bookings/payment', 'refresh');
         }
+    }
+    function payment(){
+        $returnURL = base_url().'paypal/success'; //payment success url
+        $cancelURL = base_url().'paypal/cancel'; //payment cancel url
+        $notifyURL = base_url().'paypal/ipn'; //ipn url
+        //get particular product data
+        $this->load->model('booking');
+        $bookingRow = $this->booking->getBookingRow();
+        
+        $userID = $this->session->userdata('id');; //current user id
+        
+        
+        $this->paypal_lib->add_field('return', $returnURL);
+        $this->paypal_lib->add_field('cancel_return', $cancelURL);
+        $this->paypal_lib->add_field('notify_url', $notifyURL);
+        $this->paypal_lib->add_field('booking_id', $bookingRow->id);
+        $this->paypal_lib->add_field('user_id', $userID);
+        $this->paypal_lib->add_field('amount',  $bookingRow->price);        
+        $this->paypal_lib->paypal_auto_form();
     }
 
     private function is_logged_in() {
