@@ -4,19 +4,18 @@ class Paypal extends CI_Controller
      function  __construct(){
         parent::__construct();
         $this->load->library('paypal_lib');
-        $this->load->model('product');
+        $this->load->model('payments');
      }
      
      function success(){
         //get the transaction data
-        $paypalInfo = $this->input->get();
-          
-        $data['item_number'] = $paypalInfo['item_number']; 
+        $paypalInfo = $this->input->post();
+        
+        $data['item_number'] = $paypalInfo['user_id']; 
         $data['txn_id'] = $paypalInfo["tx"];
         $data['payment_amt'] = $paypalInfo["amt"];
         $data['currency_code'] = $paypalInfo["cc"];
         $data['status'] = $paypalInfo["st"];
-        
         //pass the transaction data to view
         $this->load->view('paypal/success', $data);
      }
@@ -29,21 +28,21 @@ class Paypal extends CI_Controller
         //paypal return transaction details array
         $paypalInfo    = $this->input->post();
 
-        $data['user_id'] = $paypalInfo['custom'];
-        $data['product_id']    = $paypalInfo["item_number"];
+        $data['user_id'] = $paypalInfo['user_id'];
+        $data['booking_id']    = $paypalInfo["booking_id"];
         $data['txn_id']    = $paypalInfo["txn_id"];
         $data['payment_gross'] = $paypalInfo["mc_gross"];
         $data['currency_code'] = $paypalInfo["mc_currency"];
         $data['payer_email'] = $paypalInfo["payer_email"];
         $data['payment_status']    = $paypalInfo["payment_status"];
-
+        
         $paypalURL = $this->paypal_lib->paypal_url;        
         $result    = $this->paypal_lib->curlPost($paypalURL,$paypalInfo);
-        
+        $this->load->model('payments');
         //check whether the payment is verified
         if(preg_match("/VERIFIED/i",$result)){
             //insert the transaction data into the database
-            $this->product->insertTransaction($data);
+            $this->payments->saveTransaction($data);
         }
     }
 }

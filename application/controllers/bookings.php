@@ -60,9 +60,9 @@ class Bookings extends CI_Controller {
         }
     }
     function payment(){
-        $returnURL = base_url().'paypal/success'; //payment success url
-        $cancelURL = base_url().'paypal/cancel'; //payment cancel url
-        $notifyURL = base_url().'paypal/ipn'; //ipn url
+        $returnURL = base_url().'index.php/paypal/success'; //payment success url
+        $cancelURL = base_url().'index.php/paypal/cancel'; //payment cancel url
+        $notifyURL = base_url().'index.php/paypal/ipn'; //ipn url
         //get particular product data
         $this->load->model('booking');
         $bookingRow = $this->booking->getBookingRow();
@@ -76,6 +76,7 @@ class Bookings extends CI_Controller {
         $this->paypal_lib->add_field('booking_id', $bookingRow->id);
         $this->paypal_lib->add_field('user_id', $userID);
         $this->paypal_lib->add_field('amount',  $bookingRow->price);        
+        
         $this->paypal_lib->paypal_auto_form();
     }
 
