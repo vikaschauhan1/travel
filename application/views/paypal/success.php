@@ -13,5 +13,5 @@
     <span>Payment Status : 
         <strong><?php echo $payment_status; ?></strong>
     </span><br/>
-    <a href="<?php echo base_url();?>/admin/dashboard">Go to admin dashboard</a>
+    <a href="<?php echo base_url();?>index.php/admin/dashboard">Go to admin dashboard</a>
 </div>
