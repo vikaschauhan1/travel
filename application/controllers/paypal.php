@@ -10,12 +10,11 @@ class Paypal extends CI_Controller
      function success(){
         //get the transaction data
         $paypalInfo = $this->input->post();
-        
-        $data['item_number'] = $paypalInfo['user_id']; 
-        $data['txn_id'] = $paypalInfo["tx"];
-        $data['payment_amt'] = $paypalInfo["amt"];
-        $data['currency_code'] = $paypalInfo["cc"];
-        $data['status'] = $paypalInfo["st"];
+        $data['booking_id'] = $paypalInfo['custom']; 
+        $data['txn_id'] = $paypalInfo["txn_id"];
+        $data['payment_gross'] = $paypalInfo["payment_gross"];
+        $data['currency_code'] = $paypalInfo["mc_currency"];
+        $data['payer_email'] = $paypalInfo["payer_email"];
         //pass the transaction data to view
         $this->load->view('paypal/success', $data);
      }
@@ -27,15 +26,12 @@ class Paypal extends CI_Controller
      function ipn(){
         //paypal return transaction details array
         $paypalInfo    = $this->input->post();
-
-        $data['user_id'] = $paypalInfo['user_id'];
-        $data['booking_id']    = $paypalInfo["booking_id"];
-        $data['txn_id']    = $paypalInfo["txn_id"];
-        $data['payment_gross'] = $paypalInfo["mc_gross"];
+        $data['booking_id'] = $paypalInfo['custom']; 
+        $data['txn_id'] = $paypalInfo["txn_id"];
+        $data['payment_gross'] = $paypalInfo["payment_gross"];
         $data['currency_code'] = $paypalInfo["mc_currency"];
         $data['payer_email'] = $paypalInfo["payer_email"];
-        $data['payment_status']    = $paypalInfo["payment_status"];
-        
+      
         $paypalURL = $this->paypal_lib->paypal_url;        
         $result    = $this->paypal_lib->curlPost($paypalURL,$paypalInfo);
         $this->load->model('payments');

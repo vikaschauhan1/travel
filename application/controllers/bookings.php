@@ -73,8 +73,7 @@ class Bookings extends CI_Controller {
         $this->paypal_lib->add_field('return', $returnURL);
         $this->paypal_lib->add_field('cancel_return', $cancelURL);
         $this->paypal_lib->add_field('notify_url', $notifyURL);
-        $this->paypal_lib->add_field('booking_id', $bookingRow->id);
-        $this->paypal_lib->add_field('user_id', $userID);
+        $this->paypal_lib->add_field('custom', $bookingRow->id);
         $this->paypal_lib->add_field('amount',  $bookingRow->price);        
         
         $this->paypal_lib->paypal_auto_form();
