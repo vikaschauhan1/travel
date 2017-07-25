@@ -15,7 +15,13 @@ class Paypal extends CI_Controller
         $data['payment_gross'] = $paypalInfo["payment_gross"];
         $data['currency_code'] = $paypalInfo["mc_currency"];
         $data['payer_email'] = $paypalInfo["payer_email"];
+        $data['payment_status']    = $paypalInfo["payment_status"];
         //pass the transaction data to view
+        $paymentdetail = $this->payments->getBookingPayment($data);
+        if(empty($paymentdetail)){
+            $this->payments->saveTransaction($data);
+        }
+        
         $this->load->view('paypal/success', $data);
      }
      
@@ -31,7 +37,7 @@ class Paypal extends CI_Controller
         $data['payment_gross'] = $paypalInfo["payment_gross"];
         $data['currency_code'] = $paypalInfo["mc_currency"];
         $data['payer_email'] = $paypalInfo["payer_email"];
-      
+        $data['payment_status']    = $paypalInfo["payment_status"];
         $paypalURL = $this->paypal_lib->paypal_url;        
         $result    = $this->paypal_lib->curlPost($paypalURL,$paypalInfo);
         $this->load->model('payments');
