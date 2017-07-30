@@ -52,7 +52,7 @@ Class Booking extends CI_Model {
 
         return array();
     }
-
+    
     function getBookingDetail($id, $isGuide = false) {
 
         $this->db->select('bookings.member_id,bookings.guide_id, bookings.booking_date, bookings.booking_detail,'
