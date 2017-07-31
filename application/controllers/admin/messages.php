@@ -24,7 +24,7 @@ class Messages extends CI_Controller {
                 $isguide = $details->role == 1? false : true; 
             if ($this->form_validation->run() == FALSE){
                 $data['main_content'] = 'backend/messages/messages';
-                $data['receivers'] = $this->booking->getBookingDetail($this->session->userdata('id'), $isguide);
+                $data['receivers'] = $this->booking->getBookingDetail($this->session->userdata('id'), $isguide, true);
                 $data['title'] = 'Messages';
                 $this->load->view('includes/template', $data);
             } else {

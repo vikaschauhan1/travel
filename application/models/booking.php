@@ -53,7 +53,7 @@ Class Booking extends CI_Model {
         return array();
     }
     
-    function getBookingDetail($id, $isGuide = false) {
+    function getBookingDetail($id, $isGuide = false, $isForMessage = false) {
 
         $this->db->select('bookings.member_id,bookings.guide_id, bookings.booking_date, bookings.booking_detail,'
                 . 'bookings.location_id, users.lastname, users.firstname,users.email, users.phone,'
@@ -64,15 +64,21 @@ Class Booking extends CI_Model {
         if ($isGuide) {
             $this->db->join('users', 'bookings.member_id = users.id');
             $this->db->join('users_profile', 'bookings.guide_id = users_profile.user_id');
-
+            
             $this->db->where('bookings.guide_id = ', $id);
+            if($isForMessage){
+                $this->db->group_by('user_id'); 
+            }
         } else {
             $this->db->join('users', 'bookings.guide_id = users.id');
             $this->db->join('users_profile', 'bookings.guide_id = users_profile.user_id');
 
             $this->db->where('bookings.member_id = ', $id);
+            if($isForMessage){
+                $this->db->group_by('guide_id'); 
+            }
         }
-
+        
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {
