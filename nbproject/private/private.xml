@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/myprojects/travel/application/libraries/Paypal_lib.php</file>
-            <file>file:/E:/myprojects/travel/application/controllers/paypal.php</file>
-            <file>file:/E:/myprojects/travel/application/controllers/admin/dashboard.php</file>
-            <file>file:/E:/myprojects/travel/application/models/users.php</file>
-            <file>file:/E:/myprojects/travel/sql_dump/2017-06-07_rankViews.sql</file>
-            <file>file:/E:/myprojects/travel/application/models/booking.php</file>
-            <file>file:/E:/myprojects/travel/application/views/paypal/success.php</file>
-            <file>file:/E:/myprojects/travel/application/models/profile.php</file>
-            <file>file:/E:/myprojects/travel/application/models/payments.php</file>
-            <file>file:/E:/myprojects/travel/application/config/autoload.php</file>
-            <file>file:/E:/myprojects/travel/system/helpers/url_helper.php</file>
-            <file>file:/E:/myprojects/travel/application/controllers/bookings.php</file>
+            <file>file:/E:/myprojects/travel/application/views/backend/messages/messages.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/admin/bookings.php</file>
+            <file>file:/E:/myprojects/travel/application/views/backend/bookings/booking.php</file>
+            <file>file:/E:/myprojects/travel/application/models/message.php</file>
+            <file>file:/E:/myprojects/travel/application/controllers/admin/messages.php</file>
         </group>
     </open-files>
 </project-private>

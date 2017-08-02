@@ -67,7 +67,7 @@ Class Booking extends CI_Model {
             
             $this->db->where('bookings.guide_id = ', $id);
             if($isForMessage){
-                $this->db->group_by('user_id'); 
+                $this->db->group_by('bookings.member_id'); 
             }
         } else {
             $this->db->join('users', 'bookings.guide_id = users.id');
@@ -75,7 +75,7 @@ Class Booking extends CI_Model {
 
             $this->db->where('bookings.member_id = ', $id);
             if($isForMessage){
-                $this->db->group_by('guide_id'); 
+                $this->db->group_by('bookings.guide_id'); 
             }
         }
         

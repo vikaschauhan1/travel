@@ -30,13 +30,10 @@ class Messages extends CI_Controller {
             } else {
                 
                 $data = $this->input->post();
-                if($isguide){
-                    $data['user_id'] = $data['receiver'];
-                    $data['guide_id'] = $this->session->userdata('id');
-                } else{
-                    $data['guide_id'] = $data['receiver'];
-                    $data['user_id'] = $this->session->userdata('id');
-                }
+                
+                $data['send_to'] = $data['receiver'];
+                $data['send_by'] = $this->session->userdata('id');
+                
                 unset($data['receiver']);
                 $this->message->sendMessage($data);
                 $this->session->set_flashdata('message', 'Message Sent successfully!');
